@@ -21,7 +21,7 @@ if __name__ == '__main__':
     import pandas as pd
     from tqdm import tqdm
     import multiprocessing as mp
-    pool = mp.Pool(mp.cpu_count()//3) # use all CPUs available.
+    pool = mp.Pool(mp.cpu_count()-1) # use all CPUs available minus 1 thread
     
     suffix = '_test' # appened to filenames for organizational purposes of multiple runs
     # np.random.seed(0)
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         str(param):hlvl + [0]*(1+num_steps-len(hlvl)) for param,hlvl in zip(params,[xx[2] for xx in sim_results])
         })
     df_hlvl.to_hdf('data/hlvl_all'+suffix+'.hdf','df')
-    #%%
+    #%% uncomment only if you are doing just a few seed values
     # hold population obj info
     # df_popi = pd.DataFrame({})
     # df_pop = pd.DataFrame({})
