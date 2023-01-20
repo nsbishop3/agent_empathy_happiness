@@ -5,6 +5,6 @@ The data is too large for a free Github account, so the text file in the data fo
 
 All verification and validaiton techniques mentioned in the paper can be found within the scripts of this repo.
 
-This code was created using Python 3.7.13 with anaconda version 22.9.0
+This code was created using Python 3.7.13 and Anaconda distribution 22.9.0
 
 If there are any questions, email nbishop3@gmu.edu
