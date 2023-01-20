@@ -90,34 +90,34 @@ if __name__ == '__main__':
         str(param):hlvl + [0]*(1+num_steps-len(hlvl)) for param,hlvl in zip(params,[xx[2] for xx in sim_results])
         })
     df_hlvl.to_hdf('data/hlvl_all'+suffix+'.hdf','df')
-    #%% uncomment only if you are doing just a few seed values
+    #%% COMMENT THIS SECTION IF YOU ARE PERFORMING RUNS OVER MORE THAN ONE SEED VALUE
     # hold population obj info
-    # df_popi = pd.DataFrame({})
-    # df_pop = pd.DataFrame({})
-    # for i,simres in enumerate(sim_results):
-    #     df_popitmp = pd.DataFrame({})
-    #     df_poptmp = pd.DataFrame({})
+    df_popi = pd.DataFrame({})
+    df_pop = pd.DataFrame({})
+    for i,simres in enumerate(sim_results):
+        df_popitmp = pd.DataFrame({})
+        df_poptmp = pd.DataFrame({})
         
-    #     popi = simres[0]
-    #     pop = simres[1]
+        popi = simres[0]
+        pop = simres[1]
         
-    #     df_popitmp['run'] = [str(params[i]) for xx in popi]
-    #     df_popitmp['run_idx'] = [i for xx in popi]
-    #     df_popitmp['agent_id'] = [xx.agent_id for xx in popi]
-    #     df_popitmp['person_type'] = [xx.person_type for xx in popi]
-    #     df_popitmp['friends'] = [[yy.agent_id for yy in xx.friends] for xx in popi]
+        df_popitmp['run'] = [str(params[i]) for xx in popi]
+        df_popitmp['run_idx'] = [i for xx in popi]
+        df_popitmp['agent_id'] = [xx.agent_id for xx in popi]
+        df_popitmp['person_type'] = [xx.person_type for xx in popi]
+        df_popitmp['friends'] = [[yy.agent_id for yy in xx.friends] for xx in popi]
         
-    #     df_poptmp['run'] = [str(params[i]) for xx in pop]
-    #     df_poptmp['run_idx'] = [i for xx in pop]
-    #     df_poptmp['agent_id'] = [xx.agent_id for xx in pop]
-    #     df_poptmp['person_type'] = [xx.person_type for xx in pop]
-    #     df_poptmp['friends'] = [[yy.agent_id for yy in xx.friends] for xx in pop]
+        df_poptmp['run'] = [str(params[i]) for xx in pop]
+        df_poptmp['run_idx'] = [i for xx in pop]
+        df_poptmp['agent_id'] = [xx.agent_id for xx in pop]
+        df_poptmp['person_type'] = [xx.person_type for xx in pop]
+        df_poptmp['friends'] = [[yy.agent_id for yy in xx.friends] for xx in pop]
         
-    #     df_popi = df_popi.append(df_popitmp)
-    #     df_pop = df_pop.append(df_poptmp)
+        df_popi = df_popi.append(df_popitmp)
+        df_pop = df_pop.append(df_poptmp)
     
-    # df_popi.to_csv('data/init_pop'+suffix+'.csv',index=False)
-    # df_pop.to_csv('data/pop'+suffix+'.csv',index=False)
+    df_popi.to_csv('data/init_pop'+suffix+'.csv',index=False)
+    df_pop.to_csv('data/pop'+suffix+'.csv',index=False)
     #%%
     pool.close()
     pool.join()
