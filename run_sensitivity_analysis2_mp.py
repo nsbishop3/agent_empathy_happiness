@@ -21,7 +21,7 @@ if __name__ == '__main__':
     import pandas as pd
     from tqdm import tqdm
     import multiprocessing as mp
-    pool = mp.Pool(mp.cpu_count()//3) # use all CPUs available
+    pool = mp.Pool(mp.cpu_count()-1) # use all CPUs available minus 1 thread
     suffix = '_16_24'
 
     #%% scenario vars
